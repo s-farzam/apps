@@ -54,7 +54,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-// Made with the .ui >> go to slot >> triggered.
 void MainWindow::on_actionNew_triggered()
 {
     currentFile.clear();
@@ -69,7 +68,7 @@ void MainWindow::on_actionOpen_triggered()
     currentFile = fileName;
 
     if (!file.open(QIODevice::ReadOnly | QFile::Text)) {
-        QMessageBox::warning(this, "Warning", "Can not open the file. \nError: " + file.errorString());
+        QMessageBox::warning(this, "Warning", "Notepad cannot open the file. \nError: " + file.errorString());
         return;
     }
 
@@ -159,7 +158,6 @@ void MainWindow::exportPdf()
         printer.setOutputFileName(fileName);
         printer.setPageMargins(QMarginsF(30, 30, 30, 30));
         ui->textEdit->document()->print(&printer);  // Converts text to PDF.
-        // Connect this slot.
     }
 
 }
